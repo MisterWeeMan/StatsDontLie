@@ -1,9 +1,11 @@
 package com.example.portfolioapp
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.portfolioapp.api.Service
@@ -64,5 +66,8 @@ class MainActivity : AppCompatActivity() {
             val newName = binding.whoEditText.text
             welcomeText.text = getString(R.string.welcome_message_username, newName)
         }
+
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PortfolioApp</string>
+    <string name="app_name">Stats Don\'t Lie</string>
     <string name="welcome_message_guest">Welcome guest!</string>
     <string name="welcome_message_username">Welcome %1$s!</string>
     <string name="players">Players</string>
