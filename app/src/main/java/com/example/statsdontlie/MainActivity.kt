@@ -7,6 +7,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import com.example.statsdontlie.databinding.ActivityMainBinding
 import com.example.statsdontlie.databinding.ActivityMainConstraintsBinding
 
 /**
@@ -30,8 +31,8 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main_constraints) // ConstraintLayout
 
         binding.apply {
-            playerBtn.setOnClickListener { playersClicked(it) }
-            teamBtn.setOnClickListener { teamsClicked(it) }
+            playersBtn.setOnClickListener { playersClicked(it) }
+            teamsBtn.setOnClickListener { teamsClicked(it) }
             gamesBtn.setOnClickListener { gamesClicked(it) }
             whoDoneButton.setOnClickListener { setName(it) }
         }

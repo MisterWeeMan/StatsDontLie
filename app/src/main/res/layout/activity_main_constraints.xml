@@ -28,13 +28,13 @@
             android:id="@+id/player_image"
             style="@style/main_menu_image_constraint_style"
             android:contentDescription="@string/basketball_player_jersey_description"
-            app:layout_constraintEnd_toStartOf="@id/player_btn"
+            app:layout_constraintEnd_toStartOf="@id/players_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/welcome_text"
             app:srcCompat="@drawable/basketball_jersey_black" />
 
         <Button
-            android:id="@+id/player_btn"
+            android:id="@+id/players_btn"
             style="@style/main_menu_btn_constraint_style"
             android:text="@string/players"
             app:layout_constraintBottom_toBottomOf="@id/player_image"
@@ -46,13 +46,13 @@
             android:id="@+id/team_image"
             style="@style/main_menu_image_constraint_style"
             android:contentDescription="@string/two_basketball_players_description"
-            app:layout_constraintEnd_toStartOf="@id/team_btn"
+            app:layout_constraintEnd_toStartOf="@id/teams_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/player_image"
             app:srcCompat="@drawable/basketball_players_black" />
 
         <Button
-            android:id="@+id/team_btn"
+            android:id="@+id/teams_btn"
             style="@style/main_menu_btn_constraint_style"
             android:text="@string/teams"
             app:layout_constraintBottom_toBottomOf="@id/team_image"
