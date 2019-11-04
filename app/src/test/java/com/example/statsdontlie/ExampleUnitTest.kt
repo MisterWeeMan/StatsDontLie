@@ -1,4 +1,4 @@
-package com.example.portfolioapp
+package com.example.statsdontlie
 
 import org.junit.Test
 

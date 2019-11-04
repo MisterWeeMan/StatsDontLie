@@ -1,4 +1,4 @@
-package com.example.portfolioapp.model
+package com.example.statsdontlie.model
 
 import com.squareup.moshi.Json
 

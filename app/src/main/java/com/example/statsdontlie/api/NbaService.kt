@@ -1,6 +1,6 @@
-package com.example.portfolioapp.api
+package com.example.statsdontlie.api
 
-import com.example.portfolioapp.model.json.PlayersData
+import com.example.statsdontlie.model.json.PlayersData
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit

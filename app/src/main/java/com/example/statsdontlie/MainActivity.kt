@@ -1,18 +1,13 @@
-package com.example.portfolioapp
+package com.example.statsdontlie
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.example.portfolioapp.api.Service
-import com.example.portfolioapp.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.example.statsdontlie.databinding.ActivityMainConstraintsBinding
 
 /**
  * Remember to credit the author of icons
@@ -21,17 +16,22 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
 
     // like a layer of glue between layouts and its views and data
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainConstraintsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // inflate UI
-        // setContentView(R.layout.activity_main)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        /**
+         * inflate UI
+         * without binding: setContentView(R.layout.activity_main)
+         *
+         * in order to change layout you need also to change the bind object type
+         */
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_main) // LinearLayout
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main_constraints) // ConstraintLayout
 
         binding.apply {
-            playersBtn.setOnClickListener { playersClicked(it) }
-            teamsBtn.setOnClickListener { teamsClicked(it) }
+            playerBtn.setOnClickListener { playersClicked(it) }
+            teamBtn.setOnClickListener { teamsClicked(it) }
             gamesBtn.setOnClickListener { gamesClicked(it) }
             whoDoneButton.setOnClickListener { setName(it) }
         }

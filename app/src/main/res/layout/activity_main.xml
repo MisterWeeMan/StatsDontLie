@@ -23,13 +23,13 @@
         <LinearLayout style="@style/main_menu_linear_layout_style">
 
             <ImageView
-                android:id="@+id/players_image"
+                android:id="@+id/player_image"
                 style="@style/main_menu_image_style"
                 android:contentDescription="@string/basketball_player_jersey_description"
-                android:src="@drawable/basketball_jersey_1" />
+                android:src="@drawable/basketball_jersey_black" />
 
             <Button
-                android:id="@+id/players_btn"
+                android:id="@+id/player_btn"
                 style="@style/main_menu_btn_style"
                 android:text="@string/players" />
 
@@ -41,7 +41,7 @@
                 android:id="@+id/teams_image"
                 style="@style/main_menu_image_style"
                 android:contentDescription="@string/two_basketball_players_description"
-                android:src="@drawable/basketball_players_1" />
+                android:src="@drawable/basketball_players_black" />
 
             <Button
                 android:id="@+id/teams_btn"

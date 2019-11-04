@@ -1,6 +1,6 @@
-package com.example.portfolioapp.model.json
+package com.example.statsdontlie.model.json
 
-import com.example.portfolioapp.model.Player
+import com.example.statsdontlie.model.Player
 import com.squareup.moshi.Json
 
 data class PlayersData(
