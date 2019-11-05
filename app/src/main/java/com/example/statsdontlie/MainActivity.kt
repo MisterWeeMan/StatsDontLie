@@ -7,8 +7,12 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.statsdontlie.databinding.ActivityMainBinding
 import com.example.statsdontlie.databinding.ActivityMainConstraintsBinding
+import com.example.statsdontlie.databinding.ActivityMainFragmentBinding
 
 /**
  * Remember to credit the author of icons
@@ -17,7 +21,9 @@ import com.example.statsdontlie.databinding.ActivityMainConstraintsBinding
 class MainActivity : AppCompatActivity() {
 
     // like a layer of glue between layouts and its views and data
-    private lateinit var binding: ActivityMainConstraintsBinding
+    private lateinit var binding: ActivityMainFragmentBinding
+
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,26 +34,23 @@ class MainActivity : AppCompatActivity() {
          * in order to change layout you need also to change the bind object type
          */
 //        binding = DataBindingUtil.setContentView(this, R.layout.activity_main) // LinearLayout
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main_constraints) // ConstraintLayout
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_main_constraints) // ConstraintLayout
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main_fragment) // Fragments
 
-        binding.apply {
-            playersBtn.setOnClickListener { playersClicked(it) }
-            teamsBtn.setOnClickListener { teamsClicked(it) }
-            gamesBtn.setOnClickListener { gamesClicked(it) }
-            whoDoneButton.setOnClickListener { setName(it) }
-        }
-
-//        var player: String = "ciao"
-//
-//        GlobalScope.launch {
-//            val service = Service.api
-//
-//            val players = service.getPlayers()
-//
-//            player = players.data[0].toString()
+//        binding.apply {
+//            playersBtn.setOnClickListener { playersClicked(it) }
+//            teamsBtn.setOnClickListener { teamsClicked(it) }
+//            gamesBtn.setOnClickListener { gamesClicked(it) }
+//            whoDoneButton.setOnClickListener { setName(it) }
 //        }
-//
-//        text_view.text = player
+
+        navController = this.findNavController(R.id.my_nav_host_fragment)
+
+        NavigationUI.setupActionBarWithNavController(this, navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
     }
 
     private fun playersClicked(view: View) {
@@ -62,13 +65,13 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "Games clicked!", Toast.LENGTH_SHORT).show()
     }
 
-    private fun setName(view: View) {
-        binding.apply {
-            val newName = binding.whoEditText.text
-            welcomeText.text = getString(R.string.welcome_message_username, newName)
-        }
-
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view.windowToken, 0)
-    }
+//    private fun setName(view: View) {
+//        binding.apply {
+//            val newName = binding.whoEditText.text
+//            welcomeText.text = getString(R.string.welcome_message_username, newName)
+//        }
+//
+//        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+//        imm.hideSoftInputFromWindow(view.windowToken, 0)
+//    }
 }

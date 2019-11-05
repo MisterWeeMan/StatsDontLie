@@ -11,4 +11,10 @@
     <string name="who_are_you">Who are you?</string>
     <string name="edit_name_text">Enter your name or nickname</string>
     <string name="done">Done</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lebron_james">Lebron James</string>
+    <string name="anthony_davis">Anthony Davis</string>
+    <string name="kevin_durant">Kevin Durant</string>
 </resources>

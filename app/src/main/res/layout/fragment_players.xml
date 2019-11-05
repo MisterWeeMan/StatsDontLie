@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <LinearLayout
+        android:id="@+id/players_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/layout_margin"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/lebron_dummy_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_margin"
+            android:text="@string/lebron_james"
+            android:textAlignment="center"
+            android:textSize="@dimen/large_text"/>
+
+        <TextView
+            android:id="@+id/ad_dummy_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_margin"
+            android:text="@string/anthony_davis"
+            android:textAlignment="center"
+            android:textSize="@dimen/large_text"/>
+
+        <TextView
+            android:id="@+id/durant_dummy_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_margin"
+            android:text="@string/kevin_durant"
+            android:textAlignment="center"
+            android:textSize="@dimen/large_text"/>
+
+    </LinearLayout>
+
+</layout>
