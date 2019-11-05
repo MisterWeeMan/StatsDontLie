@@ -2,14 +2,14 @@ package com.example.statsdontlie.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.statsdontlie.R
 import com.example.statsdontlie.databinding.FragmentMainBinding
 
@@ -29,7 +29,21 @@ class MainFragment : Fragment() {
             whoDoneButton.setOnClickListener { setName(it) }
         }
 
+        setHasOptionsMenu(true)
+        activity?.setTitle(R.string.app_name)
+
         return binding.root
+    }
+
+    // inflate option menu
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.overflow_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item, view!!.findNavController())
+                || super.onOptionsItemSelected(item)
     }
 
     private fun setName(view: View) {
