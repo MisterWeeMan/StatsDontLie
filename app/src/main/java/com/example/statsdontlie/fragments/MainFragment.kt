@@ -30,7 +30,6 @@ class MainFragment : Fragment() {
         }
 
         setHasOptionsMenu(true)
-        activity?.setTitle(R.string.app_name)
 
         return binding.root
     }
