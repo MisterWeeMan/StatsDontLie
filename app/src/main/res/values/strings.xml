@@ -23,4 +23,9 @@
         mollit anim id est laborum.
     </string>
     <string name="about">About</string>
+    <string name="share">Share</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="player_detail">Player detail</string>
 </resources>
