@@ -1,10 +1,8 @@
 package com.example.statsdontlie
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
@@ -26,6 +24,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
 
+    private lateinit var timer: StatsTimer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,6 +39,8 @@ class MainActivity : AppCompatActivity() {
 //        binding = DataBindingUtil.setContentView(this, R.layout.activity_main) // LinearLayout
 //        binding = DataBindingUtil.setContentView(this, R.layout.activity_main_constraints) // ConstraintLayout
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main_fragment) // Fragments
+
+        timer = StatsTimer(this.lifecycle)
 
 //        binding.apply {
 //            playersBtn.setOnClickListener { playersClicked(it) }
