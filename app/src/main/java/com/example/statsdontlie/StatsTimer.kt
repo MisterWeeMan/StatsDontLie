@@ -33,7 +33,7 @@ class StatsTimer(lifecycle: Lifecycle) : LifecycleObserver {
         // Create the runnable action, which prints out a log and increments the seconds counter
         runnable = Runnable {
             secondsCount++
-            Timber.i("Timer is at : $secondsCount")
+            Timber.i("Timer started")
             // postDelayed re-adds the action to the queue of actions the Handler is cycling
             // through. The delayMillis param tells the handler to run the runnable in
             // 1 second (1000ms)
@@ -49,6 +49,8 @@ class StatsTimer(lifecycle: Lifecycle) : LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     fun stopTimer() {
+        Timber.i("Timer stopped")
+
         // Removes all pending posts of runnable from the handler's queue, effectively stopping the
         // timer
         handler.removeCallbacks(runnable)
