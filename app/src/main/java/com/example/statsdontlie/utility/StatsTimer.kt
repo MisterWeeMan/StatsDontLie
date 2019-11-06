@@ -1,4 +1,4 @@
-package com.example.statsdontlie
+package com.example.statsdontlie.utility
 
 import android.os.Handler
 import androidx.lifecycle.Lifecycle

@@ -2,16 +2,10 @@ package com.example.statsdontlie
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.example.statsdontlie.databinding.ActivityMainBinding
-import com.example.statsdontlie.databinding.ActivityMainConstraintsBinding
-import com.example.statsdontlie.databinding.ActivityMainFragmentBinding
-import timber.log.Timber
+import com.example.statsdontlie.utility.StatsTimer
 
 /**
  * Remember to credit the author of icons
@@ -19,36 +13,14 @@ import timber.log.Timber
  */
 class MainActivity : AppCompatActivity() {
 
-    // like a layer of glue between layouts and its views and data
-    private lateinit var binding: ActivityMainFragmentBinding
-
     private lateinit var navController: NavController
-
     private lateinit var timer: StatsTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        Timber.i("onCreate called!")
-        /**
-         * inflate UI
-         * without binding: setContentView(R.layout.activity_main)
-         *
-         * in order to change layout you need also to change the bind object type
-         */
-//        binding = DataBindingUtil.setContentView(this, R.layout.activity_main) // LinearLayout
-//        binding = DataBindingUtil.setContentView(this, R.layout.activity_main_constraints) // ConstraintLayout
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main_fragment) // Fragments
+        setContentView(R.layout.activity_main)
 
         timer = StatsTimer(this.lifecycle)
-
-//        binding.apply {
-//            playersBtn.setOnClickListener { playersClicked(it) }
-//            teamsBtn.setOnClickListener { teamsClicked(it) }
-//            gamesBtn.setOnClickListener { gamesClicked(it) }
-//            whoDoneButton.setOnClickListener { setName(it) }
-//        }
-
         navController = this.findNavController(R.id.my_nav_host_fragment)
 
         NavigationUI.setupActionBarWithNavController(this, navController)
@@ -57,26 +29,4 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()
     }
-
-    private fun playersClicked(view: View) {
-        Toast.makeText(this, "Players clicked!", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun teamsClicked(view: View) {
-        Toast.makeText(this, "Teams clicked!", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun gamesClicked(view: View) {
-        Toast.makeText(this, "Games clicked!", Toast.LENGTH_SHORT).show()
-    }
-
-//    private fun setName(view: View) {
-//        binding.apply {
-//            val newName = binding.whoEditText.text
-//            welcomeText.text = getString(R.string.welcome_message_username, newName)
-//        }
-//
-//        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//        imm.hideSoftInputFromWindow(view.windowToken, 0)
-//    }
 }

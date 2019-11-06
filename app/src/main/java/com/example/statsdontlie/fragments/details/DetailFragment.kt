@@ -1,4 +1,4 @@
-package com.example.statsdontlie.fragments
+package com.example.statsdontlie.fragments.details
 
 
 import android.content.Intent
@@ -26,7 +26,9 @@ class DetailFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_player_detail, container, false)
 
         val playerDetail = binding.playerDetailText.text.toString()
-        detailFragmentArgs = DetailFragmentArgs.Builder(playerDetail).build()
+        detailFragmentArgs = DetailFragmentArgs.Builder(
+            playerDetail
+        ).build()
 
         setHasOptionsMenu(true)
 

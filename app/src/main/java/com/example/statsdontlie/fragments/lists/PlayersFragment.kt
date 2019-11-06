@@ -1,4 +1,4 @@
-package com.example.statsdontlie.fragments
+package com.example.statsdontlie.fragments.lists
 
 
 import android.os.Bundle
