@@ -56,6 +56,9 @@ dependencies {
     implementation "android.arch.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "android.arch.navigation:navigation-ui-ktx:$navigation_version"
 
+    // Timber
+    implementation "com.jakewharton.timber:timber:$timber_version"
+
     // ======== TEST ========
 
     // Junit

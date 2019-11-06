@@ -13,6 +13,7 @@ import androidx.navigation.ui.NavigationUI
 import com.example.statsdontlie.databinding.ActivityMainBinding
 import com.example.statsdontlie.databinding.ActivityMainConstraintsBinding
 import com.example.statsdontlie.databinding.ActivityMainFragmentBinding
+import timber.log.Timber
 
 /**
  * Remember to credit the author of icons
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Timber.i("onCreate called!")
         /**
          * inflate UI
          * without binding: setContentView(R.layout.activity_main)
