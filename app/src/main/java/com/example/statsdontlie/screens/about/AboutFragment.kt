@@ -1,4 +1,4 @@
-package com.example.statsdontlie.fragments.about
+package com.example.statsdontlie.screens.about
 
 
 import android.os.Bundle

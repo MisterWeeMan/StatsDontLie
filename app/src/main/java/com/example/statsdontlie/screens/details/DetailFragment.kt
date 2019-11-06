@@ -1,4 +1,4 @@
-package com.example.statsdontlie.fragments.details
+package com.example.statsdontlie.screens.details
 
 
 import android.content.Intent

@@ -1,4 +1,4 @@
-package com.example.statsdontlie.fragments.title
+package com.example.statsdontlie.screens.title
 
 import android.os.Bundle
 import android.view.*

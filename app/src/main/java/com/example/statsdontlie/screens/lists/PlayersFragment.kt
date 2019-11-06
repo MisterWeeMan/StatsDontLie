@@ -1,4 +1,4 @@
-package com.example.statsdontlie.fragments.lists
+package com.example.statsdontlie.screens.lists
 
 
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 
 import com.example.statsdontlie.R
@@ -18,11 +19,13 @@ import com.example.statsdontlie.databinding.FragmentPlayersBinding
 class PlayersFragment : Fragment() {
 
     private lateinit var binding: FragmentPlayersBinding
+    private lateinit var viewModel: PlayersViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_players, container, false)
+        viewModel = ViewModelProviders.of(this).get(PlayersViewModel::class.java)
 
         binding.apply {
             // FIXME
