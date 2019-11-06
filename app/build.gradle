@@ -11,7 +11,7 @@ apply plugin: 'androidx.navigation.safeargs'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.portfolioapp"
+        applicationId "com.example.statsdontlie"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
