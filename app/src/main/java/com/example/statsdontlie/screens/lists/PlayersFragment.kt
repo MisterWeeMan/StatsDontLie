@@ -27,6 +27,9 @@ class PlayersFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_players, container, false)
         viewModel = ViewModelProviders.of(this).get(PlayersViewModel::class.java)
 
+        val adapter = PlayerAdapter()
+        binding.playersList.adapter = adapter
+
         binding.apply {
             // FIXME
 //            lebronDummyText.setOnClickListener(
