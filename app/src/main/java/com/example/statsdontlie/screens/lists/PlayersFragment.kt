@@ -29,15 +29,15 @@ class PlayersFragment : Fragment() {
 
         binding.apply {
             // FIXME
-            lebronDummyText.setOnClickListener(
-                Navigation.createNavigateOnClickListener(R.id.action_playersFragment_to_detailFragment)
-            )
-            adDummyText.setOnClickListener(
-                Navigation.createNavigateOnClickListener(R.id.action_playersFragment_to_detailFragment)
-            )
-            durantDummyText.setOnClickListener(
-                Navigation.createNavigateOnClickListener(R.id.action_playersFragment_to_detailFragment)
-            )
+//            lebronDummyText.setOnClickListener(
+//                Navigation.createNavigateOnClickListener(R.id.action_playersFragment_to_detailFragment)
+//            )
+//            adDummyText.setOnClickListener(
+//                Navigation.createNavigateOnClickListener(R.id.action_playersFragment_to_detailFragment)
+//            )
+//            durantDummyText.setOnClickListener(
+//                Navigation.createNavigateOnClickListener(R.id.action_playersFragment_to_detailFragment)
+//            )
         }
 
         return binding.root

@@ -3,7 +3,7 @@ package com.example.statsdontlie.dummies
 import com.example.statsdontlie.model.Player
 import com.example.statsdontlie.model.Team
 
-private val dummyLebron = Player(
+val dummyLebron = Player(
     id = 237,
     firstName = "LeBron",
     lastName = "James",
@@ -22,7 +22,7 @@ private val dummyLebron = Player(
     )
 )
 
-private val dummyDurant = Player(
+val dummyDurant = Player(
     id = 140,
     firstName = "Kevin",
     lastName = "Durant",
@@ -41,7 +41,7 @@ private val dummyDurant = Player(
     )
 )
 
-private val dummyCurry = Player(
+val dummyCurry = Player(
     id = 115,
     firstName = "Stephen",
     lastName = "James",
