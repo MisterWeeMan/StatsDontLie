@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/playersFragment"
-        android:name="com.example.statsdontlie.screens.lists.PlayersFragment"
+        android:name="com.example.statsdontlie.player.ui.PlayersFragment"
         android:label="@string/players" >
         <action
             android:id="@+id/action_playersFragment_to_detailFragment"

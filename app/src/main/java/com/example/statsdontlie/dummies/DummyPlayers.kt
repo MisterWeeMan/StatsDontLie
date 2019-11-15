@@ -1,9 +1,9 @@
 package com.example.statsdontlie.dummies
 
-import com.example.statsdontlie.model.Player
-import com.example.statsdontlie.model.Team
+import com.example.statsdontlie.api.model.PlayerJson
+import com.example.statsdontlie.api.model.TeamJson
 
-val dummyLebron = Player(
+val dummyLebron = PlayerJson(
     id = 237,
     firstName = "LeBron",
     lastName = "James",
@@ -11,7 +11,7 @@ val dummyLebron = Player(
     heightFeet = 6,
     heightInches = 8,
     weightPounds = 250,
-    team = Team(
+    teamJson = TeamJson(
         id = 14,
         abbreviation = "LAL",
         city = "Los Angeles",
@@ -22,7 +22,7 @@ val dummyLebron = Player(
     )
 )
 
-val dummyDurant = Player(
+val dummyDurant = PlayerJson(
     id = 140,
     firstName = "Kevin",
     lastName = "Durant",
@@ -30,7 +30,7 @@ val dummyDurant = Player(
     heightFeet = 6,
     heightInches = 9,
     weightPounds = 240,
-    team = Team(
+    teamJson = TeamJson(
         id = 140,
         abbreviation = "BKN",
         city = "Brooklyn",
@@ -41,7 +41,7 @@ val dummyDurant = Player(
     )
 )
 
-val dummyCurry = Player(
+val dummyCurry = PlayerJson(
     id = 115,
     firstName = "Stephen",
     lastName = "Curry",
@@ -49,7 +49,7 @@ val dummyCurry = Player(
     heightFeet = 6,
     heightInches = 3,
     weightPounds = 190,
-    team = Team(
+    teamJson = TeamJson(
         id = 10,
         abbreviation = "GSW",
         city = "Golden State",

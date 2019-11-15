@@ -1,4 +1,4 @@
-package com.example.statsdontlie.screens.lists
+package com.example.statsdontlie.player.ui
 
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView

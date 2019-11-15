@@ -1,4 +1,4 @@
-package com.example.statsdontlie.screens.lists
+package com.example.statsdontlie.player.ui
 
 
 import android.os.Bundle
@@ -6,15 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 
 import com.example.statsdontlie.R
 import com.example.statsdontlie.databinding.FragmentPlayersBinding
 
 /**
  * A simple [Fragment] subclass.
+ * This fragment show the recyclerview containing the players list.
  */
 class PlayersFragment : Fragment() {
 
@@ -27,21 +29,8 @@ class PlayersFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_players, container, false)
         viewModel = ViewModelProviders.of(this).get(PlayersViewModel::class.java)
 
-        val adapter = PlayerAdapter()
+        val adapter = PlayerAdapter(viewModel)
         binding.playersList.adapter = adapter
-
-        binding.apply {
-            // FIXME
-//            lebronDummyText.setOnClickListener(
-//                Navigation.createNavigateOnClickListener(R.id.action_playersFragment_to_detailFragment)
-//            )
-//            adDummyText.setOnClickListener(
-//                Navigation.createNavigateOnClickListener(R.id.action_playersFragment_to_detailFragment)
-//            )
-//            durantDummyText.setOnClickListener(
-//                Navigation.createNavigateOnClickListener(R.id.action_playersFragment_to_detailFragment)
-//            )
-        }
 
         return binding.root
     }
