@@ -13,5 +13,5 @@ data class PlayerJson(
     @Json(name = "height_feet") val heightFeet: Int?,
     @Json(name = "height_inches") val heightInches: Int?,
     @Json(name = "weight_pounds") val weightPounds: Int?,
-    @Json(name = "teamJson") val teamJson: TeamJson
+    @Json(name = "team") val team: TeamJson
 )

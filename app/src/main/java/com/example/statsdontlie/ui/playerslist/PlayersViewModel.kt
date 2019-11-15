@@ -1,38 +1,19 @@
 package com.example.statsdontlie.ui.playerslist
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.statsdontlie.api.model.PlayerJson
-import com.example.statsdontlie.api.NbaService
-import com.example.statsdontlie.api.Service
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.example.statsdontlie.utility.dummyGenericPlayer
+import com.example.statsdontlie.utility.dummyGenericTeam
 
 class PlayersViewModel: ViewModel() {
-    
-    private val nbaService: NbaService = Service.api
 
-    var playersCount = MutableLiveData<Int>()
-    var players = MutableLiveData<List<PlayerJson>>()
-
-    init {
-        playersCount.value = 0
-        players.value = listOf()
+    val listDummies = (1..30).toList().map {
+        dummyGenericPlayer.copy(
+            id = it,
+            firstName = "Player$it",
+            team = dummyGenericTeam.copy(
+                id = it,
+                name = "Team$it"
+            )
+        )
     }
-
-    fun setPlayersCount() {
-        GlobalScope.launch {
-            val playersData = nbaService.getPlayers()
-            playersCount.postValue(playersData.metadataJson?.resultsTotalCount)
-        }
-    }
-
-    fun setPlayersList() {
-        GlobalScope.launch {
-            val playersData = nbaService.getPlayers()
-            players.postValue(playersData.dataList)
-        }
-    }
-
-
 }
