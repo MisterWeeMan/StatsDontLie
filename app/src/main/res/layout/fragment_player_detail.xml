@@ -1,16 +1,282 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
+        android:id="@+id/player_detail_outer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/player_detail_text"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/player_item"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/about_text" />
+            android:layout_height="@dimen/player_list_item_height"
+            android:layout_margin="@dimen/small_margin"
+            android:background="@drawable/layout_border">
+
+            <TextView
+                android:id="@+id/player_item_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_margin"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:textAlignment="center"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/player_item_position"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                tools:text="@string/lebron_james" />
+
+            <TextView
+                android:id="@+id/player_item_position"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_margin"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:textAlignment="center"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/player_item_team"
+                app:layout_constraintStart_toEndOf="@id/player_item_name"
+                app:layout_constraintTop_toTopOf="parent"
+
+                tools:text="@string/forward" />
+
+            <TextView
+                android:id="@+id/player_item_team"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_margin"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:textAlignment="center"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/player_item_position"
+                app:layout_constraintTop_toTopOf="parent"
+
+                tools:text="@string/lakers" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/player_stats_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/small_margin">
+
+            <TextView
+                android:id="@+id/list_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/current_season_averages"
+                android:textSize="@dimen/large_text"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/games_played_text"/>
+
+            <TextView
+                android:id="@+id/games_played_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/games_played"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintTop_toBottomOf="@id/list_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/games_played_number"/>
+
+            <TextView
+                android:id="@+id/games_played_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintTop_toBottomOf="@id/list_title"
+                app:layout_constraintStart_toEndOf="@id/games_played_text"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                tools:text="30" />
+
+            <TextView
+                android:id="@+id/minutes_avg_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/minutes_averaged"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintTop_toBottomOf="@id/games_played_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/minutes_avg_number"/>
+
+            <TextView
+                android:id="@+id/minutes_avg_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintTop_toBottomOf="@id/games_played_text"
+                app:layout_constraintStart_toEndOf="@id/minutes_avg_text"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                tools:text="32:34" />
+
+            <TextView
+                android:id="@+id/points_avg_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/points_averaged"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintTop_toBottomOf="@id/minutes_avg_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/points_avg_number"/>
+
+            <TextView
+                android:id="@+id/points_avg_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintTop_toBottomOf="@id/minutes_avg_text"
+                app:layout_constraintStart_toEndOf="@id/points_avg_text"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                tools:text="23.5" />
+
+            <TextView
+                android:id="@+id/rebounds_avg_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/rebounds_average"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintTop_toBottomOf="@id/points_avg_number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/rebounds_avg_number"/>
+
+            <TextView
+                android:id="@+id/rebounds_avg_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintTop_toBottomOf="@id/points_avg_number"
+                app:layout_constraintStart_toEndOf="@id/rebounds_avg_text"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                tools:text="8.2" />
+
+            <TextView
+                android:id="@+id/assists_avg_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/assists_averaged"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintTop_toBottomOf="@id/rebounds_avg_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/assists_avg_number"/>
+
+            <TextView
+                android:id="@+id/assists_avg_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintTop_toBottomOf="@id/rebounds_avg_text"
+                app:layout_constraintStart_toEndOf="@id/assists_avg_text"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                tools:text="5.1" />
+
+            <TextView
+                android:id="@+id/fields_goals_pct_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/field_goals_pct"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintTop_toBottomOf="@id/assists_avg_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/fields_goals_pct_number"/>
+
+            <TextView
+                android:id="@+id/fields_goals_pct_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintTop_toBottomOf="@id/assists_avg_text"
+                app:layout_constraintStart_toEndOf="@id/fields_goals_pct_text"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                tools:text="0.485" />
+
+            <TextView
+                android:id="@+id/three_fields_goals_pct_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/three_field_goals_pct"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintTop_toBottomOf="@id/fields_goals_pct_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/three_fields_goals_pct_number"/>
+
+            <TextView
+                android:id="@+id/three_fields_goals_pct_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintTop_toBottomOf="@id/fields_goals_pct_text"
+                app:layout_constraintStart_toEndOf="@id/three_fields_goals_pct_text"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                tools:text="0.363" />
+
+            <TextView
+                android:id="@+id/ft_fields_goals_pct_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/ft_field_goals_pct"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintTop_toBottomOf="@id/three_fields_goals_pct_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ft_fields_goals_pct_number"/>
+
+            <TextView
+                android:id="@+id/ft_fields_goals_pct_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="@dimen/medium_text"
+
+                app:layout_constraintTop_toBottomOf="@id/three_fields_goals_pct_text"
+                app:layout_constraintStart_toEndOf="@id/ft_fields_goals_pct_text"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                tools:text="0.821" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 

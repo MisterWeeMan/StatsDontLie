@@ -37,5 +37,14 @@
     <string name="lakers">Los Angeles Lakers</string>
     <string name="warriors">Golden State Warriors</string>
     <string name="nets">Brooklin Nets</string>
+    <string name="current_season_averages">Current Season Averages</string>
+    <string name="games_played">Games Played:</string>
+    <string name="minutes_averaged">Minutes averaged:</string>
+    <string name="points_averaged">Points averaged:</string>
+    <string name="rebounds_average">Rebounds average:</string>
+    <string name="assists_averaged">Assists averaged:</string>
+    <string name="field_goals_pct">Field goals pct:</string>
+    <string name="three_field_goals_pct">Three field goals pct:</string>
+    <string name="ft_field_goals_pct">Ft field goals pct:</string>
 
 </resources>

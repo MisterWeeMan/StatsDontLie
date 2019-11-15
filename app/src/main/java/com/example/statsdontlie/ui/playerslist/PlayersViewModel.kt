@@ -1,4 +1,4 @@
-package com.example.statsdontlie.player.ui
+package com.example.statsdontlie.ui.playerslist
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,7 +23,7 @@ class PlayersViewModel: ViewModel() {
     fun setPlayersCount() {
         GlobalScope.launch {
             val playersData = nbaService.getPlayers()
-            playersCount.postValue(playersData.metadataJson.resultsTotalCount)
+            playersCount.postValue(playersData.metadataJson?.resultsTotalCount)
         }
     }
 

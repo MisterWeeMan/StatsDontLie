@@ -3,23 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/playersFragment">
 
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.example.statsdontlie.screens.title.TitleFragment"
-        android:label="@string/app_name" >
-        <action
-            android:id="@+id/action_mainFragment_to_playersFragment"
-            app:destination="@id/playersFragment"
-            app:enterAnim="@anim/slide_in_down"
-            app:exitAnim="@anim/slide_out_up"
-            app:popEnterAnim="@anim/slide_in_down"
-            app:popExitAnim="@anim/slide_out_up" />
-    </fragment>
-    <fragment
         android:id="@+id/playersFragment"
-        android:name="com.example.statsdontlie.player.ui.PlayersFragment"
+        android:name="com.example.statsdontlie.ui.playerslist.PlayersListFragment"
         android:label="@string/players" >
         <action
             android:id="@+id/action_playersFragment_to_detailFragment"
@@ -30,16 +18,7 @@
             app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
-        android:id="@+id/aboutFragment"
-        android:name="com.example.statsdontlie.screens.about.AboutFragment"
-        android:label="@string/about"
-        tools:layout="@layout/fragment_about" />
-    <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.statsdontlie.screens.details.DetailFragment"
-        android:label="@string/player_detail" >
-        <argument
-            android:name="player_detail"
-            app:argType="string" />
-    </fragment>
+        android:name="com.example.statsdontlie.ui.playerdetail.PlayerDetailFragment"
+        android:label="@string/player_detail" />
 </navigation>

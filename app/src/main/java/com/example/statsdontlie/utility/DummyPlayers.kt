@@ -1,4 +1,4 @@
-package com.example.statsdontlie.dummies
+package com.example.statsdontlie.utility
 
 import com.example.statsdontlie.api.model.PlayerJson
 import com.example.statsdontlie.api.model.TeamJson
