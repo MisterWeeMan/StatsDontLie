@@ -12,14 +12,18 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
+enum class PlayersApiStatus {
+    LOADING, ERROR, DONE
+}
+
 /**
  * The viewModel that is attached to PlayerListFragment
  */
 class PlayersViewModel : ViewModel() {
 
     // Store the most recent response status
-    private val _status = MutableLiveData<String>()
-    val status: LiveData<String>
+    private val _status = MutableLiveData<PlayersApiStatus>()
+    val status: LiveData<PlayersApiStatus>
         get() = _status
 
     // Store the list of Players
@@ -45,6 +49,8 @@ class PlayersViewModel : ViewModel() {
         coroutineScope.launch {
             Timber.d("CoroutineScope launched!")
 
+            _status.value = PlayersApiStatus.LOADING
+
             try {
                 // Api call to get the first page of players
                 val apiResponse = Service.api.getPlayers(playersPerPage = 100)
@@ -64,11 +70,11 @@ class PlayersViewModel : ViewModel() {
                     resultList.addAll(apiPageResponse.dataList)
                 }
 
-                _properties.value = resultList
-                _status.value = "Success: ${properties.value?.size} players retrieved"
+                _status.value = PlayersApiStatus.DONE
+                _properties.value = apiResponse.dataList
             } catch (e: Exception) {
-                _status.value = "Failure: ${e.message}"
-                Timber.d("Failure: ${e.message}")
+                _status.value = PlayersApiStatus.ERROR
+                _properties.value = listOf()
             }
         }
     }

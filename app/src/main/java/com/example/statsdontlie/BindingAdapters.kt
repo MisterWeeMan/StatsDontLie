@@ -1,10 +1,13 @@
 package com.example.statsdontlie
 
+import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.statsdontlie.api.model.PlayerJson
 import com.example.statsdontlie.ui.playerslist.PlayersAdapter
+import com.example.statsdontlie.ui.playerslist.PlayersApiStatus
 import timber.log.Timber
 
 @BindingAdapter("listPlayers")
@@ -41,5 +44,22 @@ fun bindTeamLogo(textView: TextView, player: PlayerJson?) {
     player?.let {
         Timber.d("Binding team name ${player.team.fullName}")
         textView.text = player.team.fullName
+    }
+}
+
+@BindingAdapter("playerApiStatus")
+fun bindStatus(imageView: ImageView, status: PlayersApiStatus?) {
+    when (status) {
+        PlayersApiStatus.LOADING -> {
+            imageView.visibility = View.VISIBLE
+            imageView.setImageResource(R.drawable.loading_animation)
+        }
+        PlayersApiStatus.ERROR -> {
+            imageView.visibility = View.VISIBLE
+            imageView.setImageResource(R.drawable.ic_connection_error)
+        }
+        PlayersApiStatus.DONE -> {
+            imageView.visibility = View.GONE
+        }
     }
 }
