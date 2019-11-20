@@ -5,9 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-import com.example.statsdontlie.R
 import com.example.statsdontlie.databinding.FragmentPlayersListBinding
 
 /**
@@ -15,18 +13,31 @@ import com.example.statsdontlie.databinding.FragmentPlayersListBinding
  */
 class PlayersListFragment : Fragment() {
 
-    private lateinit var binding: FragmentPlayersListBinding
-    private lateinit var viewModel: PlayersViewModel
+    /**
+     * Lazily initialize our [PlayersViewModel].
+     */
+    private val playersViewModel: PlayersViewModel by lazy {
+        ViewModelProviders.of(this).get(PlayersViewModel::class.java)
+    }
 
+    /**
+     * Inflates the layout with Data Binding, sets its lifecycle owner to the OverviewFragment
+     * to enable Data Binding to observe LiveData, and sets up the RecyclerView with an adapter.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
+        // Inflate layout
+        val binding = FragmentPlayersListBinding.inflate(inflater)
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_players_list, container, false)
-        viewModel = ViewModelProviders.of(this).get(PlayersViewModel::class.java)
+        // Sets lifecycle owner to observe live data
+        binding.lifecycleOwner = this
 
-        val adapter = PlayerAdapter(viewModel)
-        binding.playersList.adapter = adapter
+        // Giving binding access to the viewModel
+        binding.playersViewModel = playersViewModel
+
+        // Set recyclerView adapter
+        binding.playersList.adapter = PlayersAdapter()
 
         return binding.root
     }

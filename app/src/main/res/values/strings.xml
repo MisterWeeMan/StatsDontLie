@@ -47,4 +47,6 @@
     <string name="three_field_goals_pct">Three field goals pct:</string>
     <string name="ft_field_goals_pct">Ft field goals pct:</string>
 
+    <string name="player_full_name">%s %s</string>
+
 </resources>
