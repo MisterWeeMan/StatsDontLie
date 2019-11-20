@@ -43,8 +43,8 @@
             android:layout_marginStart="@dimen/small_margin"
             android:layout_marginEnd="@dimen/small_margin"
 
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/player_item_name"
+            app:layout_constraintBottom_toBottomOf="@id/player_item_name"
             app:layout_constraintStart_toEndOf="@id/player_item_name"
             app:layout_constraintEnd_toStartOf="@id/player_item_team"
             app:playerPosition="@{player}"
@@ -60,8 +60,8 @@
             android:layout_marginStart="@dimen/small_margin"
             android:layout_marginEnd="@dimen/small_margin"
 
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/player_item_position"
+            app:layout_constraintBottom_toBottomOf="@id/player_item_position"
             app:layout_constraintStart_toEndOf="@id/player_item_position"
             app:layout_constraintEnd_toEndOf="parent"
             app:teamLogo="@{player}"

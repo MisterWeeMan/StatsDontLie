@@ -40,31 +40,35 @@ class PlayersViewModel : ViewModel() {
      * [PlayerJson] [List] [LiveData].
      */
     private fun getPlayersProperties() {
+        Timber.d("GetPlayersProperties called!")
+
         coroutineScope.launch {
+            Timber.d("CoroutineScope launched!")
+
             try {
                 // Api call to get the first page of players
                 val apiResponse = Service.api.getPlayers(playersPerPage = 100)
 
-//                val apiData = apiResponse.dataList
-//                val apiMetadata = apiResponse.metadataJson
-//
-//                val totalPagesCount = apiMetadata?.pagesTotalCount
-//
-//                val resultList: MutableList<PlayerJson> = apiData.toMutableList()
-//
-//                // loop to retrieve all players
-//                Timber.d("Starting get $totalPagesCount pages of players.")
-//                (0..totalPagesCount!!).forEach {
-//                    Timber.d("Get page $it")
-//                    val apiPageResponse = Service.api.getPlayers(page = it)
-//                    resultList.addAll(apiPageResponse.dataList)
-//                }
+                val apiData = apiResponse.dataList
+                val apiMetadata = apiResponse.metadataJson
 
-//                _properties.value = resultList
-                _properties.value = apiResponse.dataList
+                val totalPagesCount = apiMetadata?.pagesTotalCount
+
+                val resultList: MutableList<PlayerJson> = apiData.toMutableList()
+
+                // loop to retrieve all players
+                Timber.d("Starting get $totalPagesCount pages of players.")
+                (0..totalPagesCount!!).forEach {
+                    Timber.d("Get page $it")
+                    val apiPageResponse = Service.api.getPlayers(page = it)
+                    resultList.addAll(apiPageResponse.dataList)
+                }
+
+                _properties.value = resultList
                 _status.value = "Success: ${properties.value?.size} players retrieved"
             } catch (e: Exception) {
                 _status.value = "Failure: ${e.message}"
+                Timber.d("Failure: ${e.message}")
             }
         }
     }

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.get
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -52,11 +53,14 @@ class PlayersAdapter: ListAdapter<PlayerJson, PlayersAdapter.PlayerViewHolder>(D
      * Create new [RecyclerView] item views (invoked by the layout manager)
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
-        return PlayerViewHolder(
-            PlayerItemLayoutBinding.inflate(
-                LayoutInflater.from(parent.context)
-            )
+        val binding: PlayerItemLayoutBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.player_item_layout,
+            parent,
+            false
         )
+
+        return PlayerViewHolder(binding)
     }
 
     /**
