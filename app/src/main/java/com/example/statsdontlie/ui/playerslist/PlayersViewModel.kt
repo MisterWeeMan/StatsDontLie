@@ -68,8 +68,9 @@ class PlayersViewModel : ViewModel() {
                 Timber.d("Starting get $totalPagesCount pages of players.")
                 (0..totalPagesCount!!).forEach {
                     Timber.d("Get page $it")
-                    val apiPageResponse = Service.api.getPlayers(page = it)
+                    val apiPageResponse = Service.api.getPlayers(playersPerPage = 100, page = it)
                     resultList.addAll(apiPageResponse.dataList)
+                    Timber.d("Fetched ${resultList.size} players")
                 }
 
                 Timber.d("Fetched ${resultList.size} players")
