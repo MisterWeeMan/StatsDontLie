@@ -15,15 +15,22 @@ import com.example.statsdontlie.ui.playerslist.PlayersViewModel
  */
 class PlayerDetailFragment : Fragment() {
 
-    private lateinit var binding: FragmentPlayerDetailBinding
-    private lateinit var viewModel: PlayersViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_player_detail, container, false)
-        viewModel = ViewModelProviders.of(this).get(PlayersViewModel::class.java)
+        val application = requireNotNull(activity).application
+        val binding: FragmentPlayerDetailBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_player_detail, container, false)
+
+        binding.lifecycleOwner = this
+
+        val player = PlayerDetailFragmentArgs.fromBundle(arguments!!).player
+        val viewModelFactory = PlayerViewModel.PlayerViewModelFactory(player, application)
+
+        binding.viewModel = ViewModelProviders
+            .of(this, viewModelFactory)
+            .get(PlayerViewModel::class.java)
 
         return binding.root
     }

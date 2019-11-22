@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.example.statsdontlie.databinding.FragmentPlayersListBinding
 
 /**
@@ -37,7 +39,18 @@ class PlayersListFragment : Fragment() {
         binding.playersViewModel = playersViewModel
 
         // Set recyclerView adapter
-        binding.playersList.adapter = PlayersAdapter()
+        binding.playersList.adapter = PlayersAdapter(PlayersAdapter.OnClickListener {
+            playersViewModel.displayPlayerDetail(it)
+        })
+
+        playersViewModel.navigateToPlayerDetail.observe(this, Observer {
+            if (it != null) {
+                this.findNavController().navigate(
+                    PlayersListFragmentDirections.actionPlayersFragmentToDetailFragment(it)
+                )
+                playersViewModel.displayPlayerDetailComplete()
+            }
+        })
 
         return binding.root
     }

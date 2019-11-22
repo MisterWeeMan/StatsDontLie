@@ -18,7 +18,8 @@ import com.example.statsdontlie.databinding.PlayerItemLayoutBinding
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
  * data, including computing diffs between lists.
  */
-class PlayersAdapter: ListAdapter<PlayerJson, PlayersAdapter.PlayerViewHolder>(DiffCallback) {
+class PlayersAdapter(val onClickListener: OnClickListener)
+    : ListAdapter<PlayerJson, PlayersAdapter.PlayerViewHolder>(DiffCallback) {
 
     /**
      * The [PlayerViewHolder] constructor takes the binding variable from the associated
@@ -68,6 +69,17 @@ class PlayersAdapter: ListAdapter<PlayerJson, PlayersAdapter.PlayerViewHolder>(D
      */
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
         val player = getItem(position)
+
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(player)
+        }
         holder.bind(player)
+    }
+
+    /**
+     * OnClickListener that takes a player and return nothing
+     */
+    class OnClickListener(val onClickListener: (playerJson: PlayerJson) -> Unit) {
+        fun onClick(playerJson: PlayerJson) = onClickListener(playerJson)
     }
 }

@@ -1,10 +1,13 @@
 package com.example.statsdontlie.api.model
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
 /**
  * Player JSON data.
  */
+@Parcelize
 data class PlayerJson(
     @Json(name = "id") val id: Int,
     @Json(name = "first_name") val firstName: String,
@@ -14,4 +17,4 @@ data class PlayerJson(
     @Json(name = "height_inches") val heightInches: Int?,
     @Json(name = "weight_pounds") val weightPounds: Int?,
     @Json(name = "team") val team: TeamJson
-)
+) : Parcelable

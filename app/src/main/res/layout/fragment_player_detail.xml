@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.statsdontlie.ui.playerdetail.PlayerViewModel" />
+    </data>
+
     <LinearLayout
         android:id="@+id/player_detail_outer_layout"
         android:layout_width="match_parent"
@@ -29,6 +35,7 @@
                 app:layout_constraintEnd_toStartOf="@id/player_item_position"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:playerName="@{viewModel.selectedPlayer}"
 
                 tools:text="@string/lebron_james" />
 
@@ -45,6 +52,7 @@
                 app:layout_constraintEnd_toStartOf="@id/player_item_team"
                 app:layout_constraintStart_toEndOf="@id/player_item_name"
                 app:layout_constraintTop_toTopOf="parent"
+                app:playerPosition="@{viewModel.selectedPlayer}"
 
                 tools:text="@string/forward" />
 
@@ -61,6 +69,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/player_item_position"
                 app:layout_constraintTop_toTopOf="parent"
+                app:teamLogo="@{viewModel.selectedPlayer}"
 
                 tools:text="@string/lakers" />
 
@@ -101,6 +110,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textSize="@dimen/medium_text"
+                android:text="@{String.valueOf(viewModel.playerAverages.gamesPlayed)}"
 
                 app:layout_constraintTop_toBottomOf="@id/list_title"
                 app:layout_constraintStart_toEndOf="@id/games_played_text"
@@ -125,6 +135,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textSize="@dimen/medium_text"
+                android:text="@{viewModel.playerAverages.minute}"
 
                 app:layout_constraintTop_toBottomOf="@id/games_played_text"
                 app:layout_constraintStart_toEndOf="@id/minutes_avg_text"
@@ -149,6 +160,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textSize="@dimen/medium_text"
+                android:text="@{String.valueOf(viewModel.playerAverages.points)}"
 
                 app:layout_constraintTop_toBottomOf="@id/minutes_avg_text"
                 app:layout_constraintStart_toEndOf="@id/points_avg_text"
@@ -173,6 +185,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textSize="@dimen/medium_text"
+                android:text="@{String.valueOf(viewModel.playerAverages.rebounds)}"
 
                 app:layout_constraintTop_toBottomOf="@id/points_avg_number"
                 app:layout_constraintStart_toEndOf="@id/rebounds_avg_text"
@@ -197,6 +210,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textSize="@dimen/medium_text"
+                android:text="@{String.valueOf(viewModel.playerAverages.assists)}"
 
                 app:layout_constraintTop_toBottomOf="@id/rebounds_avg_text"
                 app:layout_constraintStart_toEndOf="@id/assists_avg_text"
@@ -225,8 +239,9 @@
                 app:layout_constraintTop_toBottomOf="@id/assists_avg_text"
                 app:layout_constraintStart_toEndOf="@id/fields_goals_pct_text"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:statPct="@{viewModel.playerAverages.fieldGoalsPct}"
 
-                tools:text="0.485" />
+                tools:text="48.5%" />
 
             <TextView
                 android:id="@+id/three_fields_goals_pct_text"
@@ -249,8 +264,9 @@
                 app:layout_constraintTop_toBottomOf="@id/fields_goals_pct_text"
                 app:layout_constraintStart_toEndOf="@id/three_fields_goals_pct_text"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:statPct="@{viewModel.playerAverages.threeFieldGoalsPct}"
 
-                tools:text="0.363" />
+                tools:text="36.3%" />
 
             <TextView
                 android:id="@+id/ft_fields_goals_pct_text"
@@ -273,8 +289,9 @@
                 app:layout_constraintTop_toBottomOf="@id/three_fields_goals_pct_text"
                 app:layout_constraintStart_toEndOf="@id/ft_fields_goals_pct_text"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:statPct="@{viewModel.playerAverages.freeThrowsPct}"
 
-                tools:text="0.821" />
+                tools:text="82.1%" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

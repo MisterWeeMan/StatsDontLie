@@ -31,6 +31,11 @@ class PlayersViewModel : ViewModel() {
     val properties: LiveData<List<PlayerJson>>
         get() = _properties
 
+    // Navigate to player detail
+    private val _navigateToPlayerDetail = MutableLiveData<PlayerJson>()
+    val navigateToPlayerDetail: LiveData<PlayerJson>
+        get() = _navigateToPlayerDetail
+
     // Create a Coroutine scope using a job to be able to cancel when needed
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -44,14 +49,11 @@ class PlayersViewModel : ViewModel() {
      * [PlayerJson] [List] [LiveData].
      */
     private fun getPlayersProperties() {
-        Timber.d("GetPlayersProperties called!")
-
         coroutineScope.launch {
-            Timber.d("CoroutineScope launched!")
-
-            _status.value = PlayersApiStatus.LOADING
-
             try {
+                Timber.d("Starting fetching players")
+                _status.value = PlayersApiStatus.LOADING
+
                 // Api call to get the first page of players
                 val apiResponse = Service.api.getPlayers(playersPerPage = 100)
 
@@ -70,13 +72,25 @@ class PlayersViewModel : ViewModel() {
                     resultList.addAll(apiPageResponse.dataList)
                 }
 
+                Timber.d("Fetched ${resultList.size} players")
                 _status.value = PlayersApiStatus.DONE
-                _properties.value = apiResponse.dataList
+                _properties.value = resultList
             } catch (e: Exception) {
                 _status.value = PlayersApiStatus.ERROR
+                Timber.e(e.message)
                 _properties.value = listOf()
             }
         }
+    }
+
+    // Navigate to the detail screen
+    fun displayPlayerDetail(playerJson: PlayerJson) {
+        _navigateToPlayerDetail.value = playerJson
+    }
+
+    // To call when navigation to detail screen is complete
+    fun displayPlayerDetailComplete() {
+        _navigateToPlayerDetail.value = null
     }
 
     /**

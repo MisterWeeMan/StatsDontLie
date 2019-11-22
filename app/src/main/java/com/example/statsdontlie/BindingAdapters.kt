@@ -63,3 +63,11 @@ fun bindStatus(imageView: ImageView, status: PlayersApiStatus?) {
         }
     }
 }
+
+@BindingAdapter("statPct")
+fun bindPct(textView: TextView, doublePct: Double?) {
+    doublePct?.let {
+        val pct = doublePct * 100
+        textView.text = "$pct%"
+    }
+}

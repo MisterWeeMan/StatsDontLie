@@ -44,9 +44,9 @@ interface NbaService {
     suspend fun getGames(
         @Query("page") page: Int = 0,
         @Query("per_page") playersPerPage: Int = 25,
-        @Query("dates") dates: Array<String> = arrayOf(), // format "YYYY-MM-DD"
-        @Query("seasons") seasons: Array<Int> = arrayOf(),
-        @Query("team_ids") teamIds: Array<Int> = arrayOf(),
+        @Query("date[]s") dates: Array<String> = arrayOf(), // format "YYYY-MM-DD"
+        @Query("season[]s") seasons: Array<Int> = arrayOf(),
+        @Query("team_ids[]") teamIds: Array<Int> = arrayOf(),
         @Query("postseason") postseasonGames: Boolean = false,
         @Query("start_date") startDate: String = "", // format "YYYY-MM-DD"
         @Query("end_date") endDate: String = "" // format "YYYY-MM-DD"
@@ -59,10 +59,10 @@ interface NbaService {
     suspend fun getStats(
         @Query("page") page: Int = 0,
         @Query("per_page") playersPerPage: Int = 25,
-        @Query("dates") dates: Array<String> = arrayOf(), // format "YYYY-MM-DD"
-        @Query("seasons") seasons: Array<Int> = arrayOf(),
-        @Query("player_ids") playerIds: Array<Int> = arrayOf(),
-        @Query("game_ids") gameIds: Array<Int> = arrayOf(),
+        @Query("dates[]") dates: Array<String> = arrayOf(), // format "YYYY-MM-DD"
+        @Query("seasons[]") seasons: Array<Int> = arrayOf(),
+        @Query("player_ids[]") playerIds: Array<Int> = arrayOf(),
+        @Query("game_ids[]") gameIds: Array<Int> = arrayOf(),
         @Query("postseason") postseasonGames: Boolean = false,
         @Query("start_date") startDate: String = "", // format "YYYY-MM-DD"
         @Query("end_date") endDate: String = "" // format "YYYY-MM-DD"
@@ -71,7 +71,7 @@ interface NbaService {
     @GET("season_averages") // return season averages for specific players
     suspend fun getSeasonAverages(
         @Query("season") season: Int = Calendar.getInstance().get(Calendar.YEAR), // get the current year
-        @Query("player_ids") playerIds: Array<Int> = arrayOf()
+        @Query("player_ids[]") playerIds: Array<Int> = arrayOf()
     ): DataJson<SeasonAvaragesJson>
 }
 
