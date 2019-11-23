@@ -68,6 +68,9 @@ dependencies {
     // Recyclerview
     implementation "com.android.support:recyclerview-v7:$support_library_v7_version"
 
+    // Lottie animations
+    implementation "com.airbnb.android:lottie:$lottie_version"
+
     // ======== TEST ========
 
     // Junit

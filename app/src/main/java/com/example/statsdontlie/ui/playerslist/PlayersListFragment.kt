@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.example.statsdontlie.R
 import com.example.statsdontlie.databinding.FragmentPlayersListBinding
 
 /**
@@ -49,6 +50,28 @@ class PlayersListFragment : Fragment() {
                     PlayersListFragmentDirections.actionPlayersFragmentToDetailFragment(it)
                 )
                 playersViewModel.displayPlayerDetailComplete()
+            }
+        })
+
+        playersViewModel.status.observe(this, Observer { status ->
+            binding.apply {
+                when (status) {
+                    PlayersApiStatus.LOADING -> {
+                        playersList.visibility = View.GONE
+                        connectionErrorImage.visibility = View.GONE
+                        loadingAnimation.visibility = View.VISIBLE
+                    }
+                    PlayersApiStatus.ERROR, null -> {
+                        playersList.visibility = View.GONE
+                        connectionErrorImage.visibility = View.VISIBLE
+                        loadingAnimation.visibility = View.GONE
+                    }
+                    PlayersApiStatus.DONE -> {
+                        playersList.visibility = View.VISIBLE
+                        connectionErrorImage.visibility = View.GONE
+                        loadingAnimation.visibility = View.GONE
+                    }
+                }
             }
         })
 
