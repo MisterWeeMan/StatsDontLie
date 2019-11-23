@@ -47,23 +47,6 @@ fun bindTeamLogo(textView: TextView, player: PlayerJson?) {
     }
 }
 
-@BindingAdapter("playerApiStatus")
-fun bindStatus(imageView: ImageView, status: PlayersApiStatus?) {
-    when (status) {
-        PlayersApiStatus.LOADING -> {
-            imageView.visibility = View.VISIBLE
-            imageView.setImageResource(R.drawable.loading_animation)
-        }
-        PlayersApiStatus.ERROR -> {
-            imageView.visibility = View.VISIBLE
-            imageView.setImageResource(R.drawable.ic_connection_error)
-        }
-        PlayersApiStatus.DONE -> {
-            imageView.visibility = View.GONE
-        }
-    }
-}
-
 @BindingAdapter("statPct")
 fun bindPct(textView: TextView, doublePct: Double?) {
     doublePct?.let {
