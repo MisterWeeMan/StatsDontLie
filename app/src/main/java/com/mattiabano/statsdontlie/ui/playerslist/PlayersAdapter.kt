@@ -1,18 +1,14 @@
-package com.example.statsdontlie.ui.playerslist
+package com.mattiabano.statsdontlie.ui.playerslist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.statsdontlie.R
-import com.example.statsdontlie.api.model.PlayerJson
-import com.example.statsdontlie.databinding.PlayerItemLayoutBinding
+import com.mattiabano.statsdontlie.R
+import com.mattiabano.statsdontlie.api.model.PlayerJson
+import com.mattiabano.statsdontlie.databinding.PlayerItemLayoutBinding
 
 /**
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]

@@ -1,4 +1,4 @@
-package com.example.statsdontlie.ui.playerslist
+package com.mattiabano.statsdontlie.ui.playerslist
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import com.example.statsdontlie.R
-import com.example.statsdontlie.databinding.FragmentPlayersListBinding
+import com.mattiabano.statsdontlie.databinding.FragmentPlayersListBinding
 
 /**
  * Fragment that show the recyclerview view containing the list of players.

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.statsdontlie.ui.playerdetail.PlayerViewModel" />
+            type="com.mattiabano.statsdontlie.ui.playerdetail.PlayerViewModel" />
     </data>
 
     <LinearLayout

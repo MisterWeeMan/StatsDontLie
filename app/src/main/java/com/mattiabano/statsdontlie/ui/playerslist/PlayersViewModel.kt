@@ -1,11 +1,10 @@
-package com.example.statsdontlie.ui.playerslist
+package com.mattiabano.statsdontlie.ui.playerslist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.statsdontlie.api.Service
-import com.example.statsdontlie.api.model.PlayerJson
-import com.example.statsdontlie.api.model.TeamJson
+import com.mattiabano.statsdontlie.api.Service
+import com.mattiabano.statsdontlie.api.model.PlayerJson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -57,23 +56,25 @@ class PlayersViewModel : ViewModel() {
                 // Api call to get the first page of players
                 val apiResponse = Service.api.getPlayers(playersPerPage = 100)
 
-                val apiData = apiResponse.dataList
-                val apiMetadata = apiResponse.metadataJson
+                val totalPagesCount = apiResponse.metadataJson?.pagesTotalCount
 
-                val totalPagesCount = apiMetadata?.pagesTotalCount
-
-                val resultList: MutableList<PlayerJson> = apiData.toMutableList()
+                val resultList = mutableListOf<PlayerJson>()
 
                 // loop to retrieve all players
                 Timber.d("Starting get $totalPagesCount pages of players.")
-                (0..totalPagesCount!!).forEach {
-                    Timber.d("Get page $it")
+
+                (1..totalPagesCount!!).forEach {
                     val apiPageResponse = Service.api.getPlayers(playersPerPage = 100, page = it)
                     resultList.addAll(apiPageResponse.dataList)
-                    Timber.d("Fetched ${resultList.size} players")
+
+                    val resultPerPage = apiPageResponse.metadataJson?.resultPerPage
+                    Timber.d("Fetched $resultPerPage players from page $it")
                 }
 
                 Timber.d("Fetched ${resultList.size} players")
+
+                resultList.sortBy { it.firstName }
+
                 _status.value = PlayersApiStatus.DONE
                 _properties.value = resultList
             } catch (e: Exception) {

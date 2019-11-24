@@ -1,4 +1,4 @@
-package com.example.statsdontlie
+package com.mattiabano.statsdontlie
 
 import org.junit.Test
 

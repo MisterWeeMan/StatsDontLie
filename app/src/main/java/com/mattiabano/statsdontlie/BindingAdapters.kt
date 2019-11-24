@@ -1,13 +1,10 @@
-package com.example.statsdontlie
+package com.mattiabano.statsdontlie
 
-import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.statsdontlie.api.model.PlayerJson
-import com.example.statsdontlie.ui.playerslist.PlayersAdapter
-import com.example.statsdontlie.ui.playerslist.PlayersApiStatus
+import com.mattiabano.statsdontlie.api.model.PlayerJson
+import com.mattiabano.statsdontlie.ui.playerslist.PlayersAdapter
 import timber.log.Timber
 
 @BindingAdapter("listPlayers")

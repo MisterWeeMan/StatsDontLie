@@ -6,7 +6,7 @@
     <data>
         <variable
             name="player"
-            type="com.example.statsdontlie.api.model.PlayerJson" />
+            type="com.mattiabano.statsdontlie.api.model.PlayerJson" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

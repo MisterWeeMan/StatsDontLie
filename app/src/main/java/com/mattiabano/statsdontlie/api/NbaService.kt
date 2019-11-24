@@ -1,6 +1,6 @@
-package com.example.statsdontlie.api
+package com.mattiabano.statsdontlie.api
 
-import com.example.statsdontlie.api.model.*
+import com.mattiabano.statsdontlie.api.model.*
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit

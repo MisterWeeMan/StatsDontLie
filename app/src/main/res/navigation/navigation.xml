@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/playersFragment"
-        android:name="com.example.statsdontlie.ui.playerslist.PlayersListFragment"
+        android:name="com.mattiabano.statsdontlie.ui.playerslist.PlayersListFragment"
         android:label="@string/players">
         <action
             android:id="@+id/action_playersFragment_to_detailFragment"
@@ -19,10 +19,10 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.statsdontlie.ui.playerdetail.PlayerDetailFragment"
+        android:name="com.mattiabano.statsdontlie.ui.playerdetail.PlayerDetailFragment"
         android:label="@string/player_detail">
         <argument
             android:name="player"
-            app:argType="com.example.statsdontlie.api.model.PlayerJson" />
+            app:argType="com.mattiabano.statsdontlie.api.model.PlayerJson" />
     </fragment>
 </navigation>

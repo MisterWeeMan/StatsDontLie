@@ -1,4 +1,4 @@
-package com.example.statsdontlie
+package com.mattiabano.statsdontlie
 
 import android.app.Application
 import timber.log.Timber

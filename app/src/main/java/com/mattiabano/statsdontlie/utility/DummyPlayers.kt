@@ -1,7 +1,7 @@
-package com.example.statsdontlie.utility
+package com.mattiabano.statsdontlie.utility
 
-import com.example.statsdontlie.api.model.PlayerJson
-import com.example.statsdontlie.api.model.TeamJson
+import com.mattiabano.statsdontlie.api.model.PlayerJson
+import com.mattiabano.statsdontlie.api.model.TeamJson
 
 val dummyGenericTeam = TeamJson(
     id = 1,

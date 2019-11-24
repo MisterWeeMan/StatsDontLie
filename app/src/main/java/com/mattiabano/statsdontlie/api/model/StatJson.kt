@@ -1,4 +1,4 @@
-package com.example.statsdontlie.api.model
+package com.mattiabano.statsdontlie.api.model
 
 import com.squareup.moshi.Json
 

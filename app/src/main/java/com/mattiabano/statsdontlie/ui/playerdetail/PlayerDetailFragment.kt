@@ -1,14 +1,12 @@
-package com.example.statsdontlie.ui.playerdetail
+package com.mattiabano.statsdontlie.ui.playerdetail
 
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-import com.example.statsdontlie.R
-import com.example.statsdontlie.databinding.FragmentPlayerDetailBinding
-import com.example.statsdontlie.ui.playerslist.PlayersViewModel
+import com.mattiabano.statsdontlie.R
+import com.mattiabano.statsdontlie.databinding.FragmentPlayerDetailBinding
 
 /**
  * Fragment that show a player details.
