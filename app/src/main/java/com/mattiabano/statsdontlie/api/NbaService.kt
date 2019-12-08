@@ -16,7 +16,7 @@ import java.util.*
  * Documentation: https://www.balldontlie.io/
  */
 
-private const val BASE_URL = " https://www.balldontlie.io/api/v1/"
+private const val BASE_URL = "https://www.balldontlie.io/api/v1/"
 
 // This interface contains all HTTP API calls that I need in the application
 interface NbaService {
