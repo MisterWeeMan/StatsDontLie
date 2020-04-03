@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -56,16 +57,19 @@ class PlayersListFragment : Fragment() {
             binding.apply {
                 when (status) {
                     PlayersApiStatus.LOADING -> {
+                        searchPlayer.visibility = View.GONE
                         playersList.visibility = View.GONE
                         connectionErrorImage.visibility = View.GONE
                         loadingAnimation.visibility = View.VISIBLE
                     }
                     PlayersApiStatus.ERROR, null -> {
+                        searchPlayer.visibility = View.GONE
                         playersList.visibility = View.GONE
                         connectionErrorImage.visibility = View.VISIBLE
                         loadingAnimation.visibility = View.GONE
                     }
                     PlayersApiStatus.DONE -> {
+                        searchPlayer.visibility = View.VISIBLE
                         playersList.visibility = View.VISIBLE
                         connectionErrorImage.visibility = View.GONE
                         loadingAnimation.visibility = View.GONE
@@ -73,6 +77,23 @@ class PlayersListFragment : Fragment() {
                 }
             }
         })
+
+        binding.apply {
+            searchPlayer.setOnQueryTextListener(
+                object : SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(query: String?): Boolean {
+                        playersViewModel!!.getPlayersFiltered(searchPlayer.query.toString())
+                        return true
+                    }
+
+                    override fun onQueryTextChange(newText: String?): Boolean {
+                        return true
+                    }
+                }
+            )
+
+
+        }
 
         return binding.root
     }
