@@ -44,7 +44,48 @@ class PlayersViewModel : ViewModel() {
     }
 
     /**
-     * Gets Player property information from the API Retrofit service and updates the
+     * Gets filtered Players property information from the API Retrofit service and updates the
+     * [PlayerJson] [List] [LiveData].
+     */
+    public fun getPlayersFiltered(query: String) {
+        coroutineScope.launch {
+            try {
+                Timber.d("Starting fetching filtered players")
+                _status.value = PlayersApiStatus.LOADING
+
+                val apiResponse = Service.api.getPlayers(playersPerPage = 100, search = query)
+
+                val totalPagesCount = apiResponse.metadataJson?.pagesTotalCount
+
+                val resultList = mutableListOf<PlayerJson>()
+
+                // loop to retrieve all players
+                Timber.d("Starting get $totalPagesCount pages of players.")
+
+                (1..totalPagesCount!!).forEach {
+                    val apiPageResponse = Service.api.getPlayers(playersPerPage = 100, search = query, page = it)
+                    resultList.addAll(apiPageResponse.dataList)
+
+                    val resultPerPage = apiPageResponse.metadataJson?.resultPerPage
+                    Timber.d("Fetched $resultPerPage players from page $it")
+                }
+
+                Timber.d("Fetched ${resultList.size} players")
+
+                resultList.sortBy { it.firstName }
+
+                _status.value = PlayersApiStatus.DONE
+                _properties.value = resultList
+            } catch (e: Exception) {
+                _status.value = PlayersApiStatus.ERROR
+                Timber.e(e.message)
+                _properties.value = listOf()
+            }
+        }
+    }
+
+    /**
+     * Gets Players property information from the API Retrofit service and updates the
      * [PlayerJson] [List] [LiveData].
      */
     private fun getPlayersProperties() {

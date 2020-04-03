@@ -48,5 +48,6 @@
     <string name="ft_field_goals_pct">Ft field goals pct:</string>
 
     <string name="player_full_name">%s %s</string>
+    <string name="search_title">Search player</string>
 
 </resources>
